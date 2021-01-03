@@ -12,12 +12,6 @@ namespace m111001001.CameraView
             StartCoroutine(Wait());
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         IEnumerator Wait()
         {
             yield return new WaitForSeconds(1);

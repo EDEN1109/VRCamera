@@ -5,7 +5,7 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     [SerializeField] RectTransform vrBox;
-    [SerializeField] Camera camera;
+    [SerializeField] Camera cameraForTest;
     private float screenX;
     private float screenY;
 

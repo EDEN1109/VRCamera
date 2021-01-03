@@ -12,15 +12,6 @@ namespace m111001001.Platforms
         private Vector3 FirstPoint;
         private Vector3 SecondPoint;
 
-        void Awake()
-        {
-        }
-
-        void Start()
-        {
-
-        }
-
         override protected void Update()
         {
             base.Update();

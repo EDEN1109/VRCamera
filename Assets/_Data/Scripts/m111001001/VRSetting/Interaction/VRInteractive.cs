@@ -10,7 +10,7 @@ namespace m111001001.Interaction
     // It contains events that can be subscribed to by classes that
     // need to know about input specifics to this gameobject.
     [RequireComponent(typeof(Collider))]
-    public class VRInteractive : MonoBehaviour
+    public abstract class VRInteractive : MonoBehaviour
     {
         public bool canMouseClick = false;
         public UnityEvent OnReticleEnter;             // Called when the gaze moves over this object

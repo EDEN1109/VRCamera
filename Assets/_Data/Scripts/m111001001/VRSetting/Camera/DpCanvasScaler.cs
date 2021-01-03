@@ -19,38 +19,30 @@ namespace m111001001.CameraView
     {
         [Tooltip("If a sprite has this 'Pixels Per Unit' setting, then one pixel in the sprite will cover one unit in the UI.")]
         [SerializeField]
-        protected float m_ReferencePixelsPerUnit = 100;
+        private float m_ReferencePixelsPerUnit = 100;
         public float referencePixelsPerUnit { get { return m_ReferencePixelsPerUnit; } set { m_ReferencePixelsPerUnit = value; } }
-
-        // The log base doesn't have any influence on the results whatsoever, as long as the same base is used everywhere.
-        private const float kLogBase = 2;
 
         [Tooltip("The DPI to assume if the screen DPI is not known.")]
         [SerializeField]
-        protected float m_FallbackScreenDPI = 96;
+        private float m_FallbackScreenDPI = 96;
         public float fallbackScreenDPI { get { return m_FallbackScreenDPI; } set { m_FallbackScreenDPI = value; } }
 
         [Tooltip("The pixels per inch to use for sprites that have a 'Pixels Per Unit' setting that matches the 'Reference Pixels Per Unit' setting.")]
         [SerializeField]
-        protected float m_DefaultSpriteDPI = 96;
+        private float m_DefaultSpriteDPI = 96;
         public float defaultSpriteDPI { get { return m_DefaultSpriteDPI; } set { m_DefaultSpriteDPI = value; } }
 
         // World Canvas settings
         [Tooltip("The amount of pixels per unit to use for dynamically created bitmaps in the UI, such as Text.")]
         [SerializeField]
-        protected float m_DynamicPixelsPerUnit = 1;
+        private float m_DynamicPixelsPerUnit = 1;
         public float dynamicPixelsPerUnit { get { return m_DynamicPixelsPerUnit; } set { m_DynamicPixelsPerUnit = value; } }
 
 
         // General variables
         private Canvas m_Canvas;
-        [System.NonSerialized]
         private float m_PrevScaleFactor = 1;
-        [System.NonSerialized]
         private float m_PrevReferencePixelsPerUnit = 100;
-
-
-        protected DpCanvasScaler() { }
 
         protected override void OnEnable()
         {
@@ -66,12 +58,12 @@ namespace m111001001.CameraView
             base.OnDisable();
         }
 
-        protected virtual void Update()
+        void Update()
         {
             Handle();
         }
 
-        protected virtual void Handle()
+        private void Handle()
         {
             if (m_Canvas == null || !m_Canvas.isRootCanvas)
                 return;
@@ -85,13 +77,13 @@ namespace m111001001.CameraView
             HandleConstantPhysicalSize();
         }
 
-        protected virtual void HandleWorldCanvas()
+        private void HandleWorldCanvas()
         {
             SetScaleFactor(m_DynamicPixelsPerUnit);
             SetReferencePixelsPerUnit(m_ReferencePixelsPerUnit);
         }
 
-        protected virtual void HandleConstantPhysicalSize()
+        private void HandleConstantPhysicalSize()
         {
             float currentDpi = Screen.dpi;
             float dpi = (currentDpi == 0 ? m_FallbackScreenDPI : currentDpi);
@@ -105,7 +97,7 @@ namespace m111001001.CameraView
             SetReferencePixelsPerUnit(m_ReferencePixelsPerUnit * targetDPI / m_DefaultSpriteDPI);
         }
 
-        protected void SetScaleFactor(float scaleFactor)
+        private void SetScaleFactor(float scaleFactor)
         {
             if (scaleFactor == m_PrevScaleFactor)
                 return;
@@ -114,7 +106,7 @@ namespace m111001001.CameraView
             m_PrevScaleFactor = scaleFactor;
         }
 
-        protected void SetReferencePixelsPerUnit(float referencePixelsPerUnit)
+        private void SetReferencePixelsPerUnit(float referencePixelsPerUnit)
         {
             if (referencePixelsPerUnit == m_PrevReferencePixelsPerUnit)
                 return;

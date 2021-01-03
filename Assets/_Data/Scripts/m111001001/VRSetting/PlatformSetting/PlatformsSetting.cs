@@ -6,18 +6,12 @@ using UnityEngine;
 // TO DO : namespace 이름 변경
 namespace m111001001.Platforms
 {
-    public class PlatformsSetting : MonoBehaviour
+    public abstract class PlatformsSetting : MonoBehaviour
     {
         [SerializeField] protected Transform player;
         [SerializeField] protected Transform centerCamera;
         protected float xAngle;
         protected float yAngle;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
 
         // Update is called once per frame
         virtual protected void Update()

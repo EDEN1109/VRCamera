@@ -30,18 +30,15 @@ namespace m111001001.Handler
         public UnityEvent OnCancel;                               // Called when Cancel is pressed.
 
 
-        [SerializeField] private float m_DoubleClickTime = 0.3f;    //The max time allowed between double clicks
-        [SerializeField] private float m_SwipeWidth = 0.3f;         //The width of a swipe
+        [SerializeField] private float doubleClickTime = 0.3f;    //The max time allowed between double clicks
+        [SerializeField] private float swipeWidth = 0.3f;         //The width of a swipe
 
         
-        private Vector2 m_MouseDownPosition;                        // The screen position of the mouse when Fire1 is pressed.
-        private Vector2 m_MouseUpPosition;                          // The screen position of the mouse when Fire1 is released.
-        private float m_LastMouseUpTime;                            // The time when Fire1 was last released.
-        private float m_LastHorizontalValue;                        // The previous value of the horizontal axis used to detect keyboard swipes.
-        private float m_LastVerticalValue;                          // The previous value of the vertical axis used to detect keyboard swipes.
-
-
-        public float DoubleClickTime{ get { return m_DoubleClickTime; } }
+        private Vector2 mouseDownPosition;                        // The screen position of the mouse when Fire1 is pressed.
+        private Vector2 mouseUpPosition;                          // The screen position of the mouse when Fire1 is released.
+        private float lastMouseUpTime;                            // The time when Fire1 was last released.
+        private float lastHorizontalValue;                        // The previous value of the horizontal axis used to detect keyboard swipes.
+        private float lastVerticalValue;                          // The previous value of the vertical axis used to detect keyboard swipes.
 
 
         private void Update()
@@ -58,7 +55,7 @@ namespace m111001001.Handler
             if (Input.GetButtonDown("Fire1"))
             {
                 // When Fire1 is pressed record the position of the mouse.
-                m_MouseDownPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                mouseDownPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             
                 // If anything has subscribed to OnDown call it.
                 if (OnMouseDown != null)
@@ -69,7 +66,7 @@ namespace m111001001.Handler
             if (Input.GetButtonUp ("Fire1"))
             {
                 // When Fire1 is released record the position of the mouse.
-                m_MouseUpPosition = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+                mouseUpPosition = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 
                 // Detect the direction between the mouse positions when Fire1 is pressed and released.
                 swipe = DetectSwipe ();
@@ -92,7 +89,7 @@ namespace m111001001.Handler
 
                 // If the time between the last release of Fire1 and now is less
                 // than the allowed double click time then it's a double click.
-                if (Time.time - m_LastMouseUpTime < m_DoubleClickTime)
+                if (Time.time - lastMouseUpTime < doubleClickTime)
                 {
                     // If anything has subscribed to OnDoubleClick call it.
                     if (OnMouseDoubleClick != null)
@@ -107,7 +104,7 @@ namespace m111001001.Handler
                 }
 
                 // Record the time when Fire1 is released.
-                m_LastMouseUpTime = Time.time;
+                lastMouseUpTime = Time.time;
             }
 
             // If the Cancel button is pressed and there are subscribers to OnCancel call it.
@@ -122,13 +119,13 @@ namespace m111001001.Handler
         private SwipeDirection DetectSwipe ()
         {
             // Get the direction from the mouse position when Fire1 is pressed to when it is released.
-            Vector2 swipeData = (m_MouseUpPosition - m_MouseDownPosition).normalized;
+            Vector2 swipeData = (mouseUpPosition - mouseDownPosition).normalized;
 
             // If the direction of the swipe has a small width it is vertical.
-            bool swipeIsVertical = Mathf.Abs (swipeData.x) < m_SwipeWidth;
+            bool swipeIsVertical = Mathf.Abs (swipeData.x) < swipeWidth;
 
             // If the direction of the swipe has a small height it is horizontal.
-            bool swipeIsHorizontal = Mathf.Abs(swipeData.y) < m_SwipeWidth;
+            bool swipeIsHorizontal = Mathf.Abs(swipeData.y) < swipeWidth;
 
             // If the swipe has a positive y component and is vertical the swipe is up.
             if (swipeData.y > 0f && swipeIsVertical)
@@ -158,12 +155,12 @@ namespace m111001001.Handler
             float vertical = Input.GetAxis ("Vertical");
 
             // Store whether there was horizontal or vertical input before.
-            bool noHorizontalInputPreviously = Mathf.Abs (m_LastHorizontalValue) < float.Epsilon;
-            bool noVerticalInputPreviously = Mathf.Abs(m_LastVerticalValue) < float.Epsilon;
+            bool noHorizontalInputPreviously = Mathf.Abs (lastHorizontalValue) < float.Epsilon;
+            bool noVerticalInputPreviously = Mathf.Abs(lastVerticalValue) < float.Epsilon;
 
             // The last horizontal values are now the current ones.
-            m_LastHorizontalValue = horizontal;
-            m_LastVerticalValue = vertical;
+            lastHorizontalValue = horizontal;
+            lastVerticalValue = vertical;
 
             // If there is positive vertical input now and previously there wasn't the swipe is up.
             if (vertical > 0f && noVerticalInputPreviously)
