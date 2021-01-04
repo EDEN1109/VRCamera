@@ -32,10 +32,9 @@ This chapter explains what users must know to use VRCamera.
 Simply,
 1. Remove the existing "MainCamera"
 2. Find "Player" from the Prefabs folder
-
-![Player prefab locate](https://drive.google.com/uc?export=download&id=18GIv8DUrRnk_Z80x7uoq5RlfeN-wxa7o)
+	![Player prefab locate](https://drive.google.com/uc?export=download&id=18GIv8DUrRnk_Z80x7uoq5RlfeN-wxa7o)
 3. Add "Player" to the Scene.
-![This is Example](https://drive.google.com/uc?export=download&id=1b4p1hWegZrOLYj3hXfT0jVUJQ53RMqbI)
+	![This is Example](https://drive.google.com/uc?export=download&id=1b4p1hWegZrOLYj3hXfT0jVUJQ53RMqbI)
 
 Now You can use VRCamera!
 
