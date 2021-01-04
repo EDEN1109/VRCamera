@@ -78,6 +78,7 @@ You can modify each script to give the difference between objects.
  
 2. Create or Add Events to the appropriate UnityEvents(OnReticleEnter, OnReticleStay, etc).
 
+<img src = "https://drive.google.com/uc?export=download&id=19I2FvB_XSB2OqH2XtPhOHRmQN5Zihgkf" width="40%"> <img src = "https://drive.google.com/uc?export=download&id=1nwVtUebbHDk5x3LsNfxGSyPdU0EyAsIr" width="40%">
 ![How to Add](https://drive.google.com/uc?export=download&id=19I2FvB_XSB2OqH2XtPhOHRmQN5Zihgkf =400x550)  ![How to Add](https://drive.google.com/uc?export=download&id=1nwVtUebbHDk5x3LsNfxGSyPdU0EyAsIr =400x550)
 
 ## How to Change the Platform
