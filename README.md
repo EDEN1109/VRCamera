@@ -5,7 +5,7 @@ This ReadMe file explains the usage and development process of VRCamera.
 
 ### Index
 - [Languages ​​supported by ReadMe](#Languages-supported-by-ReadMe)
-- [How to Use?](#How-to-Use?)
+- [How to Use](#How-to-Use)
 	- [How to Set up a Camera?](#How-to-Set-up-a-Camera?)
 	- [What is mean of OnRecticleEnter, OnRecticleStay, etc?](#What-is-mean-of-OnRecticleEnter,-OnRecticleStay,-etc?)
 	- [How to Set up an Interactive Item or UI?](#How-to-Set-up-an-Interactive-Item-or-UI?)
@@ -24,7 +24,7 @@ ReadMe 파일이 지원하는 언어 목록입니다.
 - [한글 README 바로가기](READMES/README_kr.md)
 - [Go to English version README](README.md)
 
-## How to Use?
+## How to Use
 
 ### How to Set up a Camera?
 Simply,
